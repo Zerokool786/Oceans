@@ -2,15 +2,11 @@ using UnityEngine;
 
 public class FixOceanBounds : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        // This tricks Unity into thinking the ocean is 1000 meters tall
+        // so it never stops drawing it, even when waves go high.
+        Mesh mesh = GetComponent<MeshFilter>().mesh;
+        mesh.bounds = new Bounds(Vector3.zero, new Vector3(1000, 1000, 1000));
     }
 }
